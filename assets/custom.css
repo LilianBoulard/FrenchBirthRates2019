@@ -34,8 +34,8 @@
   grid-auto-flow: row;
   grid-template-areas:
     "params_title"
-    "months_params"
-    "map_params";
+    "map_params"
+    "months_params";
   grid-area: params;
 }
 

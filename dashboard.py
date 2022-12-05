@@ -138,7 +138,7 @@ def last_name_pie():
         ),
         values='Births',
         path=['Parents nationality (father/mother)', 'Last name choice'],
-        title="Representation of children born from French and/or foreign parents, and last name choice",
+        title="Repr. of children born from French and/or foreign parents & last name choice",
     )
     return fig
 
@@ -199,14 +199,20 @@ def recognition():
 app.layout = html.Div([
 
     html.Div([
-        html.H1(
-            '2019 birth rates in France',
-            style={'textAlign': 'center'}
-        ),
+        html.H1([
+            html.A([
+                '2019 birth rates in France',
+            ], href="https://www.insee.fr/fr/statistiques/4768335?sommaire=4768339", target="_blank"),
+        ], style={'textAlign': 'center'}),
     ], className="title"),
 
     html.Div([
-        html.P("Can be found on Github!"),
+        html.Hr(style={"margin": "32px 8px 8px 8px"}),
+        html.A([
+            html.Img(src="assets/images/github_logo.png",
+                     height="128px", width="128px",
+                     style={"margin": "16px"}),
+        ], href="https://github.com/LilianBoulard/FrenchBirthRates2019", target="_blank"),
     ], className="info"),
 
     html.Div([
@@ -216,7 +222,8 @@ app.layout = html.Div([
         ], className="params_title"),
 
         html.Div([
-            html.H2("Graph scale:"),
+            html.H2("Map"),
+            html.H3("Scale:"),
             dcc.RadioItems(
                 ['Absolute', 'Logarithmic'],
                 'Absolute',
@@ -225,13 +232,14 @@ app.layout = html.Div([
         ], className="map_params"),
 
         html.Div([
-            html.H2("Births:"),
+            html.H2("Births per month"),
+            html.H3("Births:"),
             dcc.RadioItems(
                 ['Absolute', 'Normalized'],
                 'Absolute',
                 id='barplot-graph-bars'
             ),
-            html.H2("Months:"),
+            html.H3("Months:"),
             dcc.RadioItems(
                 ['Births', 'Procreations'],
                 'Births',
